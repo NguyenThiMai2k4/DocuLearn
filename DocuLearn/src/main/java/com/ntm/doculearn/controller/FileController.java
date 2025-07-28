@@ -28,7 +28,7 @@ public class FileController {
 
         // Lưu tạm file
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
-        File tempFile = File.createTempFile("temp_", ".pdf");
+        File tempFile = File.createTempFile("temp_ update", ".pdf");
         file.transferTo(tempFile);// chuyển file PDF vừa upload vào file tạm
 
         String content = openAiService.extractTextFromPDF(tempFile);
