@@ -1,0 +1,58 @@
+package com.ntm.doculearn.pojo;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.time.Instant;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "subject")
+public class Subject {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "admin_id", nullable = false)
+    private Admin admin;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "teacher_id", nullable = false)
+    private Teacher teacher;
+
+    @Column(name = "title", nullable = false)
+    private String title;
+
+    @Lob
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "start_date")
+    private Instant startDate;
+
+    @Column(name = "end_date")
+    private Instant endDate;
+
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @ColumnDefault("CURRENT_TIMESTAMP")
+    @Column(name = "update_at")
+    private Instant updateAt;
+
+    @ColumnDefault("'DRAFT'")
+    @Lob
+    @Column(name = "status", nullable = false)
+    private String status;
+
+}

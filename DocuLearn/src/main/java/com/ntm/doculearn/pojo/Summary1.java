@@ -22,7 +22,7 @@ public class Summary1 {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "subject_id", nullable = false)
-    private Subject1 subject;
+    private Subject subject;
 
     @Column(name = "title", nullable = false)
     private String title;

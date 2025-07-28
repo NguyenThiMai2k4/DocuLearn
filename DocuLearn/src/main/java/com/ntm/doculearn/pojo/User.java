@@ -1,6 +1,10 @@
 package com.ntm.doculearn.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.validation.constraints.Size;
@@ -9,6 +13,8 @@ import java.time.Instant;
 import java.util.Date;
 
 
+@Getter
+@Setter
 @Entity
 @Table(name = "user")
 @NamedQueries({
@@ -65,99 +71,36 @@ public class User implements Serializable {
     @Column(name = "avatar")
     private String avatar;
 
-    public String getAvatar() {
-        return avatar;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
+    private Admin admin;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
+    private Teacher teacher;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    @JsonIgnore
+    private Student student;
+
+    public User() {
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public Boolean getIsActive() {
-        return isActive;
-    }
-
-    public void setIsActive(Boolean isActive) {
-        this.isActive = isActive;
-    }
-
-    public Date getUpdateAt() {
-        return updateAt;
-    }
-
-    public void setUpdateAt(Date updateAt) {
-        this.updateAt = updateAt;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public User(Integer id) {
         this.id = id;
     }
+
+    public User(Integer id, String username, String name, String gender, String password, String role) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.gender = gender;
+        this.password = password;
+        this.role = role;
+    }
+    @Override
+    public String toString() {
+        return "com.post.pojo.User[ id=" + id + " ]";
+    }
+
 }
