@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "title": "",
+    "sections": [
+      {
+        "heading": "Phần 1: Giới thiệu tiền xử lý dữ liệu",
+        "content": "Tiền xử lý dữ liệu, hay còn gọi là data munging, là một kỹ thuật quan trọng trong khai phá dữ liệu nhằm biến đổi dữ liệu thô thành dạng có thể phân tích. Quá trình này, bao gồm data wrangling, chiếm khoảng 80% công việc của người phân tích dữ liệu. Nó giúp chuyển đổi dữ liệu sang định dạng thuận tiện, quan trọng cho các thuật toán học máy."
+      },
+      {
+        "heading": "Phần 2: Tại sao cần tiền xử lý dữ liệu",
+        "content": "Chất lượng dữ liệu là yếu tố then chốt cho hiệu suất và độ chính xác của mô hình học máy. Các khía cạnh cần xem xét bao gồm độ chính xác, tính đầy đủ, nhất quán, kịp thời, độ tin cậy và khả năng diễn giải. Dữ liệu thực tế thường không \"sạch\", có thể gặp các vấn đề như thiếu giá trị, dữ liệu nhiễu, không nhất quán và trùng lặp."
+      },
+      {
+        "heading": "Phần 3: Nguyên nhân gây ra vấn đề trong dữ liệu",
+        "content": "Dữ liệu không đầy đủ có thể do không được thu thập, lỗi từ con người, hay lỗi thiết bị. Dữ liệu nhiễu có thể do công cụ thu thập bị lỗi, sai sót trong nhập liệu hoặc truyền dữ liệu. Các vấn đề về nhất quán thường xuất phát từ nhiều nguồn hoặc định dạng khác nhau. Dữ liệu trùng lặp cũng là một vấn đề phổ biến."
+      },
+      {
+        "heading": "Phần 4: Tầm quan trọng của tiền xử lý dữ liệu",
+        "content": "Dữ liệu thường không hoàn chỉnh và không \"sạch\", do đó việc tiền xử lý rất quan trọng để đảm bảo chất lượng dữ liệu cho phân tích và xây dựng mô hình. Nguyên tắc \"Garbage In, Garbage Out\" (GIGO) nhấn mạnh rằng dữ liệu không tốt đầu vào sẽ dẫn đến kết quả không mong muốn."
+      }
+    ]
+  },
+  "multipleChoice": [],
+  "essayQuestions": [
+    "🖋️ Câu hỏi tự luận:",
+    "1. Phân tích vai trò của tiền xử lý dữ liệu trong quá trình phân tích và xây dựng mô hình dữ liệu.",
+    "2. Thảo luận về các nguyên nhân phổ biến dẫn đến dữ liệu không \"sạch\" và đề xuất giải pháp cho từng vấn đề."
+  ]
+}

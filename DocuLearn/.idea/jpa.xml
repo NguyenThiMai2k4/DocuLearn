@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" ddlLastScriptDirectoryPath="" />
+  <component name="JpaBuddyIdeaProjectConfig" ddlLastScriptDirectoryPath="">
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/ntm/doculearn/pojo" />
+    <option name="reverseEngineeringLastDbConnectionId" value="933aafb9-5eae-4cc8-a049-b1ca2796e75b" />
+  </component>
 </project>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quản lý bài viết</title>
+    <th:block th:replace="base :: styles"></th:block>
+</head>
+<body>
+<div th:replace="base :: header"></div>
+<main class="container">
+    <h1 style="text-align: center;">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ QUẢN LÍ KHÓA HỌC</h1>
+    <main class="container">
+        <form th:action="@{/}" class="p-3 bg-light rounded shadow-sm">
+            <div class="row g-2 align-items-end">
+                <!-- Tìm theo nội dung (content) -->
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Từ khóa của khóa học..." name="title">
+                </div>
+                <!-- Order -->
+                <div class="col-md-2">
+                    <select class="form-select" name="order">
+                        <option value="desc">Mới nhất</option>
+                        <option value="asc">Cũ nhất</option>
+                    </select>
+                </div>
+
+                <!-- Từ ngày -->
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name="startDate">
+                </div>
+
+                <!-- Đến ngày -->
+                <div class="col-md-2">
+                    <input type="date" class="form-control" name="endDate">
+                </div>
+            </div>
+
+            <div class="row mt-2 g-2 align-items-end">
+
+                <!-- Nút hành động -->
+                <div class="col-md-6 text-end">
+                    <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
+                    <a th:href="@{/course/createCourse}" class="btn btn-success">+ Thêm bài viết mới</a>
+                </div>
+            </div>
+
+        </form>
+
+        <table class="table table-bordered mt-3 align-middle text-center">
+            <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Ngày cập nhật</th>
+                <th>Trạng thái</th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c, iterStat : ${courses}">
+
+                <td th:text="${iterStat.index + 1}">1</td>
+
+                <td th:text="${c.title}" class="text-start">Nội dung bài viết</td>
+
+                <td th:text="${c.description }" class="text-start">Nội dung bài viết</td>
+
+                <!-- Ngày tạo -->
+                <td th:text="${c.startDate}">01/01/2024</td>
+
+                <!-- Ngày tạo -->
+                <td th:text="${c.endDate}">01/01/2024</td>
+
+                <!-- Ngày tạo -->
+                <td th:text="${c.createdAt}">01/01/2024</td>
+
+                <!-- Ngày cập nhật -->
+                <td th:text="${c.updateAt}">02/01/2024</td>
+
+                <!-- Chế độ hiển thị -->
+                <td th:text="${c.status}"></td>
+
+                <!-- delete/xoa -->
+                <td>
+                    <div class="d-flex flex-column gap-2">
+
+                        <a th:href="@{'/' + ${c.id}}"  class="btn btn-info">Update</a>
+
+                        <a th:href="@{/delete(id=${c.id})}" th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+
+
+
+                <td>
+                    <a th:href="@{/{id}/detail(id=${c.id})}">
+                        <button type="button" class="btn btn-info"> Xem chi tiết </button>
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</main>
+<!--   `${endpoint}/${id}`-->
+<div th:replace="base :: footer"></div>
+<!--                <script th:src="@{/js/main.js}"></script>-->
+
+
+</body>
+</html>
