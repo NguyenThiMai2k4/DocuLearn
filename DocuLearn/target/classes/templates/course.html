@@ -39,7 +39,7 @@
                 <!-- Nút hành động -->
                 <div class="col-md-6 text-end">
                     <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
-                    <a th:href="@{/course/createCourse}" class="btn btn-success">+ Thêm bài viết mới</a>
+                    <a th:href="@{/course/add}" class="btn btn-success">+ Thêm bài viết mới</a>
                 </div>
             </div>
 
@@ -53,9 +53,9 @@
                 <th>Description</th>
                 <th>Ngày bắt đầu</th>
                 <th>Ngày kết thúc</th>
+                <th>Ngày tạo</th>
                 <th>Ngày cập nhật</th>
                 <th>Trạng thái</th>
-                <th></th>
                 <th></th>
                 <th></th>
 
@@ -89,16 +89,16 @@
                 <td>
                     <div class="d-flex flex-column gap-2">
 
-                        <a th:href="@{'/' + ${c.id}}"  class="btn btn-info">Update</a>
+                        <a th:href="@{'/course/edit/' + ${c.id}}"  class="btn btn-info">Update</a>
 
-                        <a th:href="@{/delete(id=${c.id})}" th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
+                        <a th:href="@{/course/delete(id=${c.id})}" th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
                     </div>
                 </td>
 
 
 
                 <td>
-                    <a th:href="@{/{id}/detail(id=${c.id})}">
+                    <a th:href="@{/course/{id}/detail(id=${c.id})}">
                         <button type="button" class="btn btn-info"> Xem chi tiết </button>
                     </a>
                 </td>

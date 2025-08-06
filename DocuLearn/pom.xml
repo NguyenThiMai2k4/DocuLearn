@@ -32,6 +32,7 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+
             <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
@@ -43,6 +44,13 @@
     </dependencyManagement>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.json/json -->
+        <!--            cấu hình FormatMapper để chỉ định sử dụng Jackson để serialize/deserialize JSON.-->
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-60</artifactId>
+            <version>2.21.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>

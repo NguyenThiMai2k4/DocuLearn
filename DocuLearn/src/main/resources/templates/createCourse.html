@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tạo bài viết</title>
+    <th:block th:replace="base :: styles"></th:block>
+</head>
+<body>
+<div th:replace="base :: header"></div>
+<main class="container">
+    <h1 style="text-align: center">Tạo Khóa học</h1>
+    <form method="post" th:action="@{/add-course}" th:object="${course}" enctype="multipart/form-data">
+        <div class="mb-3 mt-3">
+            <label for="content">Title</label>
+            <input class="form-control"  th:field="*{title}" placeholder="Tên bài học" rows="4"></input>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="content">Mô tả bài học</label>
+            <textarea class="form-control" id="content" th:field="*{description}" placeholder="Nội dung bài viết" rows="4"></textarea>
+        </div>
+
+
+
+        <!--            Ngày start/end -->
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="startDate">Ngày bắt đầu</label>
+                <input type="datetime-local" id="startDate" th:field="*{startDate}" placeholder="Ngày bắt đầu ...">
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="endDate">Ngày kết thúc</label>
+                <input type="datetime-local" id="endDate" th:field="*{endDate}" placeholder="Ngày kết thúc ...">
+            </div>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="status">Trạng thái khóa học</label>
+            <select class="form-select" id="status" th:field="*{status}">
+                <option th:each="m : ${status}"
+                        th:value="${m}"
+                        th:text="${m.displayName}">status</option>
+            </select>
+        </div>
+
+
+
+        <div class="mb-3 mt-3">
+            <input type="hidden" th:field="*{id}" />
+<!--            <input type="hidden" th:field="*{image}" />-->
+            <button class="btn btn-info">
+                <span th:if="${course.id == null}">Thêm bài viết</span>
+                <span th:unless="${course.id == null}">Cập nhật bài viết</span>
+            </button>
+        </div>
+    </form>
+</main>
+<div th:replace="base :: footer"></div>
+</body>
+</html>

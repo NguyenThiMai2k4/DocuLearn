@@ -1,19 +1,18 @@
 package com.doculearn.pojo;
 
+import com.vladmihalcea.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.*;
+
 import org.hibernate.type.SqlTypes;
 
+
 import java.time.Instant;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
+
 
 @Getter
 @Setter
@@ -33,9 +32,10 @@ public class Summary {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "sections")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private Map<String, Object> sections;
+    @Column(name = "sections", columnDefinition = "json")
+//    @JdbcTypeCode(SqlTypes.JSON)
+    @Type(JsonType.class)
+    private List <Section> sections;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
@@ -60,7 +60,7 @@ public class Summary {
         this.id = id;
     }
 
-    public Summary(Integer id, String title, Map<String, Object> sections, String status) {
+    public Summary(Integer id, String title, List <Section> sections, String status) {
         this.id = id;
         this.title = title;
         this.sections = sections;
