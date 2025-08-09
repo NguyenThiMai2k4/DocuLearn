@@ -5,6 +5,7 @@ import com.doculearn.pojo.Summary;
 import com.doculearn.repositories.CourseRepository;
 import com.doculearn.repositories.SummaryRepository;
 import com.doculearn.service.SummaryService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,13 +23,11 @@ public class SummaryServiceImpl implements SummaryService {
 
     @Override
     public List<Summary> getAllSummaryByCourseId(int courseId){
-        Optional<Course> courses = this.courseRepo.findById(courseId);
-        if(courses.isPresent()){
-            Course course = courses.get();
-            return  new ArrayList<>(course.getSummaries());
-
-        }
-        return new ArrayList<>();
+       List<Summary> summaries= this.summaryRepo.findByCourse_Id(courseId);
+       if (summaries.isEmpty()){
+           throw new EntityNotFoundException("Not found Summary with courseId:"+courseId);
+       }
+       return summaries;
     }
 
     @Override

@@ -117,7 +117,7 @@ public class OpenAiService {
             line = line.trim();
             if (line.isEmpty()) continue;
 
-            if (line.startsWith("Chương")) {
+            if (line.startsWith("**Chương")) {
                 title = line;
             } else if (line.matches("^\\*{2}Phần\\s+\\d+:.*\\*{2}")) {
                 // Nếu đã có section trước -> đẩy vào mảng
@@ -152,24 +152,41 @@ public class OpenAiService {
         // ❓ Trắc nghiệm
         JSONArray mcQuestions = new JSONArray();
         String[] linesQuestion = questionsPart.split("\\r?\\n");
-        for (String line : linesQuestion) {
-            if (line.trim().isEmpty()) continue;
+        for (int i = 0; i < linesQuestion.length; i++) {
+            String line = linesQuestion[i].trim();
 
-            String[] parts = line.split("A\\.|B\\.|C\\.|D\\.");
-            if (parts.length < 5) continue;
+            // Bỏ qua dòng tiêu đề hoặc dòng trống
+            if (line.isEmpty() || line.startsWith("❓")) continue;
 
-            JSONObject questionObj = new JSONObject();
-            questionObj.put("question", parts[0].trim());
+            // Nếu đây là dòng bắt đầu câu hỏi (ví dụ: "1. ...")
+            if (line.matches("^\\d+\\..*")) {
+                String questionText = line.trim();
 
-            JSONObject options = new JSONObject();
-            options.put("A", parts[1].trim());
-            options.put("B", parts[2].trim());
-            options.put("C", parts[3].trim());
-            options.put("D", parts[4].trim());
+                // Lấy 4 dòng tiếp theo cho các đáp án
+                if (i + 4 < linesQuestion.length) {
+                    String ansA = linesQuestion[++i].replaceFirst("^-?\\s*[A-D]\\.?\\s*", "").trim();
+                    String ansB = linesQuestion[++i].replaceFirst("^-?\\s*[A-D]\\.?\\s*", "").trim();
+                    String ansC = linesQuestion[++i].replaceFirst("^-?\\s*[A-D]\\.?\\s*", "").trim();
+                    String ansD = linesQuestion[++i].replaceFirst("^-?\\s*[A-D]\\.?\\s*", "").trim();
 
-            questionObj.put("options", options);
-            mcQuestions.put(questionObj);
+                    // Tạo object câu hỏi
+                    JSONObject questionObj = new JSONObject();
+                    questionObj.put("question", questionText);
+
+                    JSONArray options = new JSONArray();
+                    options.put(ansA);
+                    options.put(ansB);
+                    options.put(ansC);
+                    options.put(ansD);
+
+                    questionObj.put("options", options);
+
+                    // Thêm vào danh sách
+                    mcQuestions.put(questionObj);
+                }
+            }
         }
+
         json.put("multipleChoice", mcQuestions);
 
         // 🖋️ Tự luận

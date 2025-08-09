@@ -10,7 +10,7 @@ package com.doculearn.enums;
  */
 public enum ResponseType {
     SINGLE_CHOICE("SINGLE_CHOICE"),
-    MULTIPLE_CHOICE("MULTIPLE_CHOICE");
+    TEXT("TEXT");
     private final String displayName;
     
     ResponseType(String displayName)
