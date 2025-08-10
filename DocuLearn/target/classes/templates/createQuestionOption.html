@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tạo Câu hỏi và Option</title>
+    <th:block th:replace="base :: styles"></th:block>
+    <script>
+        function addOptionRow() {
+            const optionsDiv = document.getElementById("optionsContainer");
+            const index = optionsDiv.querySelectorAll(".option-item").length;
+
+            const newOption = document.createElement("div");
+            newOption.classList.add("option-item");
+            newOption.innerHTML = `
+                <input type="text" name="options[${index}].content" placeholder="Nội dung Option" required/>
+                <label>Đúng?</label>
+                <input type="checkbox" name="options[${index}].correct"/>
+            `;
+            optionsDiv.appendChild(newOption);
+        }
+    </script>
+</head>
+<body>
+<div th:replace="base :: header"></div>
+<main class="container">
+    <h1 style="text-align: center">Tạo Câu hỏi</h1>
+
+<form th:action="@{'/course/' + ${courseId} + '/question-option/add'}" th:object="${questionDTO}" method="post">
+    <div class="mb-3 mt-3">
+        <label for="summaries">Thuộc Summary ?</label>
+        <select class="form-select" id="summaries" th:field="*{summaryId}">
+            <option th:each="m : ${summaries}"
+                    th:value="${m.id}"
+                    th:text="${m.id}">chọn SummaryId</option>
+        </select>
+    </div>
+
+    
+
+    <label>Nội dung câu hỏi:</label><br/>
+    <input type="text" th:field="*{content}" placeholder="Nhập câu hỏi" required/><br/><br/>
+
+    <h3>Danh sách Option</h3>
+    <div id="optionsContainer">
+        <div class="option-item" th:each="opt, iterStat : *{options}">
+            <input type="text" th:field="*{options[__${iterStat.index}__].content}" placeholder="Nội dung Option" required/>
+            <label>Đúng?</label>
+            <input type="checkbox" th:field="*{options[__${iterStat.index}__].isCorrect}"/>
+        </div>
+    </div>
+
+    <button type="button" onclick="addOptionRow()">+ Thêm Câu hỏi</button>
+    <br/><br/>
+
+    <button type="submit">Lưu câu hỏi</button>
+</form>
+</main>
+</body>
+</html>

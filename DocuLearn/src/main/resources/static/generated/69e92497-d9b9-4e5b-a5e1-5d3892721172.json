@@ -1,0 +1,56 @@
+📌 Tóm tắt:
+
+**Chương 1: Nhập môn React Native**
+
+**Phần 1: Giới thiệu**
+React Native là một framework Javascript dùng để phát triển ứng dụng di động trên iOS và Android. Nó sử dụng các native component thay vì web component, cho phép mã nguồn viết bằng React Native được biên dịch thành mã native cho cả hai hệ điều hành. Việc phát triển ứng dụng chỉ cần sử dụng Javascript, và cộng đồng người dùng rất lớn, tạo điều kiện thuận lợi cho việc học hỏi và phát triển.
+
+**Phần 2: Ứng dụng đầu tiên**
+Quá trình tạo ứng dụng đầu tiên với React Native bắt đầu bằng việc cài đặt NodeJS và công cụ tạo project. Sau đó, thực thi lệnh `npx expo start` để khởi chạy ứng dụng, cùng với việc cài đặt ứng dụng expo client trên điện thoại để quét mã QR và mở ứng dụng. Đối với máy giả lập Android, cần cài Android Studio và tạo AVD để chạy.
+
+**Phần 3: Debugging**
+Quá trình debugging trong React Native có sự khác biệt giữa hai hệ điều hành: trên Android sử dụng Command + M, còn trên iOS sử dụng Command + D. Điều này giúp lập trình viên tìm và sửa lỗi hiệu quả trên từng nền tảng.
+
+**Phần 4: Props**
+Props là các đối số truyền vào component, tương tự như thuộc tính, nhưng không thể thay đổi giá trị tại component con. Khi component có constructor, props cần được truyền vào constructor và phương thức super của React.Component. Ví dụ về sử dụng props bao gồm việc truyền danh sách người dùng từ component cha sang component con để hiển thị.
+
+**Phần 5: State**
+State là đối tượng lưu trữ giá trị thuộc tính của component và chỉ có hiệu lực trong phạm vi component đó. State có thể thay đổi bất kỳ lúc nào bằng phương thức `this.setState()`, và khi state thay đổi, component sẽ được nạp lại. Truy cập thuộc tính trong state thông qua `this.state.propertyName`.
+
+**Phần 6: Vòng đời React Component**
+Vòng đời của một React Component bao gồm ba giai đoạn chính: Mounting (khi component được đặt vào DOM), Updating (khi component được cập nhật do thay đổi trong props hoặc state), và Unmounting (khi component được gỡ khỏi DOM).
+
+❓ Câu hỏi trắc nghiệm:
+1. React Native là một framework để phát triển ứng dụng cho nền tảng nào?
+   A. iOS và Android
+   B. Windows
+   C. Linux
+   D. macOS
+
+2. Props trong React Native có đặc điểm gì?
+   A. Có thể thay đổi giá trị tại component con
+   B. Không thể thay đổi giá trị tại component con
+   C. Chỉ dùng trong hàm render
+   D. Chỉ dùng cho iOS
+
+3. Lệnh nào được sử dụng để khởi chạy ứng dụng React Native trên expo client?
+   A. npm start
+   B. npx expo start
+   C. react-native start
+   D. expo run
+
+4. Để debug ứng dụng trên iOS, sử dụng tổ hợp phím nào?
+   A. Command + M
+   B. Command + D
+   C. Control + D
+   D. Control + M
+
+5. Giai đoạn nào không phải là một phần của vòng đời React Component?
+   A. Mounting
+   B. Rendering
+   C. Updating
+   D. Unmounting
+
+🖋️ Câu hỏi tự luận:
+1. Phân tích sự khác biệt giữa Props và State trong React Native và vai trò của chúng trong quản lý dữ liệu của component.
+2. Trình bày chi tiết các bước cần thiết để phát triển ứng dụng React Native đầu tiên, từ cài đặt môi trường đến việc chạy ứng dụng trên máy giả lập.

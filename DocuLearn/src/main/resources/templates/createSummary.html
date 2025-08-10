@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tạo bài viết</title>
+    <th:block th:replace="base :: styles"></th:block>
+
+    <script>
+        function addSectionRow() {
+            const container = document.getElementById("sections-container");
+            const index = container.children.length;
+
+            const row = document.createElement("div");
+            row.innerHTML = `
+                <div style="margin-bottom:10px; border:1px solid #ccc; padding:10px;">
+                    <label>Heading:</label>
+                    <input type="text" name="sections[${index}].heading" class="form-control"/><br>
+                    <label>Content:</label>
+                    <textarea name="sections[${index}].content" class="form-control"></textarea><br>
+                    <button type="button" class="btn btn-warning" onclick="this.parentElement.remove()">Xóa section</button>
+                </div>
+            `;
+            container.appendChild(row);
+        }
+    </script>
+
+</head>
+<body>
+<div th:replace="base :: header"></div>
+<main class="container">
+    <h1 style="text-align: center">Tạo Khóa học</h1>
+    <form method="post" th:action="@{'/course/' + ${courseId} + '/add-summary'}" th:object="${summary}" enctype="multipart/form-data">
+        <div class="mb-3 mt-3">
+            <label for="title">Title</label>
+            <input class="form-control"  id="title" th:field="*{title}" placeholder="Tên bài học" rows="4">
+        </div>
+
+        <div id="sections-container">
+        <div th:each="section, iterStat : *{sections}" style="margin-bottom:10px; border:1px solid #ccc; padding:10px;">
+            <label>Heading:</label>
+            <input type="text" th:field="*{sections[__${iterStat.index}__].heading}" class="form-control"/><br>
+
+            <label>Content:</label>
+            <textarea th:field="*{sections[__${iterStat.index}__].content}" class="form-control"></textarea><br>
+
+            <button type="button" class="btn btn-warning" onclick="this.parentElement.remove()">Xóa section</button>
+        </div>
+            <button type="button" class="btn btn-info" onclick="addSectionRow()">+ Thêm Section</button>
+            <br><br>
+
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="status">Trạng thái khóa học</label>
+            <select class="form-select" id="status" th:field="*{status}">
+                <option th:each="m : ${status}"
+                        th:value="${m}"
+                        th:text="${m.displayName}">status</option>
+            </select>
+        </div>
+
+
+
+        <div class="mb-3 mt-3">
+            <input type="hidden" th:field="*{id}" />
+            <!--            <input type="hidden" th:field="*{image}" />-->
+            <button class="btn btn-primary">
+                <span th:if="${summary.id == null}">Thêm bài viết</span>
+                <span th:unless="${summary.id == null}">Cập nhật bài viết</span>
+            </button>
+        </div>
+    </form>
+</main>
+<div th:replace="base :: footer"></div>
+</body>
+</html>

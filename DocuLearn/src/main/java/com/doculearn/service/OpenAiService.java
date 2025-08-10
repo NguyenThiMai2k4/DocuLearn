@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -198,11 +200,17 @@ public class OpenAiService {
             }
         }
         json.put("essayQuestions", essayQuestions);
-
         writeJsonFile(fileId + ".json", json);
+
+
     }
 
 
+    private void writeJsonFile(String fileName, JSONObject jsonObject) throws IOException {
+        try (FileWriter fw = new FileWriter(OUTPUT_FOLDER + fileName, StandardCharsets.UTF_8)) {
+            fw.write(jsonObject.toString(2)); // Pretty print JSON
+        }
+    }
 
     private String extractSection(String text, String startPattern, String endPattern) {
         int startIndex = text.indexOf(startPattern);
@@ -221,21 +229,7 @@ public class OpenAiService {
         return text.substring(startIndex).trim();
     }
 
-//    private void writeHtmlFile(String fileName, String title, String content) throws IOException {
-//        String html = """
-//        <html><head><meta charset="UTF-8"><title>%s</title></head>
-//        <body><h2>%s</h2><pre>%s</pre></body></html>
-//        """.formatted(title, title, content);
-//
-//        try (FileWriter fw = new FileWriter(OUTPUT_FOLDER + fileName)) {
-//            fw.write(html);
-//        }
-//    }
 
-    private void writeJsonFile(String fileName, JSONObject jsonObject) throws IOException {
-        try (FileWriter fw = new FileWriter(OUTPUT_FOLDER + fileName)) {
-            fw.write(jsonObject.toString(2)); // Pretty print JSON
-        }
-    }
+
 
 }

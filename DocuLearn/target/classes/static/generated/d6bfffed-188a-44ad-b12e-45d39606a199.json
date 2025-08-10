@@ -1,0 +1,56 @@
+📌 Tóm tắt:
+
+**"Chương 1: Giới thiệu về React Native"**
+
+**Phần 1: Giới thiệu**
+React Native là một framework JavaScript dùng để phát triển ứng dụng di động cho cả iOS và Android. Nó sử dụng các native component thay cho web component, cho phép mã nguồn được biên dịch thành native code. Đặc điểm nổi bật của React Native là tính đa nền tảng, chỉ cần sử dụng JavaScript để phát triển ứng dụng, và có một cộng đồng người dùng lớn.
+
+**Phần 2: Ứng dụng đầu tiên**
+Để bắt đầu với React Native, cần cài đặt NodeJS và công cụ tạo project. Các bước thực thi bao gồm sử dụng lệnh `npx expo start` và cài đặt ứng dụng Expo Client trên thiết bị di động để quét mã QR. Để chạy ứng dụng trên máy giả lập Android, cần cài đặt Android Studio và tạo AVD.
+
+**Phần 3: Debugging**
+Quá trình gỡ lỗi trên Android và iOS có thể thực hiện bằng cách sử dụng các tổ hợp phím: Command + M cho Android và Command + D cho iOS.
+
+**Phần 4: Props**
+Props là các đối số truyền vào component, tương tự như các thuộc tính. Giá trị của props không được thay đổi trong component con và cần truyền thông qua constructor nếu có. Props giúp truyền dữ liệu từ component cha đến component con.
+
+**Phần 5: State**
+State là đối tượng lưu trữ giá trị thuộc tính của component và có thể thay đổi bất cứ lúc nào bằng phương thức `this.setState()`. Khi state thay đổi, component sẽ tự động nạp lại (re-render). State chỉ có hiệu lực trong phạm vi component và có thể truy cập qua `this.state.propertyName`.
+
+**Phần 6: Vòng đời React Component**
+Mỗi component React có ba giai đoạn chính: Mounting (khi đặt vào DOM), Updating (khi có sự thay đổi trong props hoặc state), và Unmounting (khi bị gỡ khỏi DOM).
+
+❓ Câu hỏi trắc nghiệm:
+1. A framework để phát triển ứng dụng di động cho iOS và Android là gì?
+   A. AngularJS
+   B. React Native
+   C. Vue.js
+   D. Meteor
+
+2. Để chạy ứng dụng React Native trên máy giả lập Android cần công cụ nào?
+   A. Xcode
+   B. Eclipse
+   C. Android Studio
+   D. IntelliJ IDEA
+
+3. State trong React Native có thể:
+   A. Không bao giờ thay đổi
+   B. Thay đổi bất cứ khi nào
+   C. Chỉ thay đổi một lần
+   D. Không tồn tại
+
+4. Để truyền dữ liệu từ component cha đến component con, chúng ta sử dụng:
+   A. Methods
+   B. Classes
+   C. Props
+   D. Events
+
+5. Quy trình nào không thuộc vòng đời của một React Component?
+   A. Mounting
+   B. Updating
+   C. Rendering
+   D. Unmounting
+
+🖋️ Câu hỏi tự luận:
+1. Phân tích sự khác biệt giữa Props và State trong React Native và cách chúng ảnh hưởng đến hiệu suất ứng dụng di động.
+2. Mô tả chi tiết các giai đoạn trong vòng đời của một React Component và cách chúng có thể được sử dụng trong ứng dụng thực tế.

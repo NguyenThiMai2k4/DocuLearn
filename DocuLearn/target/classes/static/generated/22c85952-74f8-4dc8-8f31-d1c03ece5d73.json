@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "title": "**Chương 2: Ngôn ngữ lập trình và thư viện NumPy**",
+    "sections": [
+      {
+        "heading": "Phần 1: Giới thiệu thư viện NumPy",
+        "content": "NumPy là thư viện nguồn mở và miễn phí của Python, được sử dụng rộng rãi trong các lĩnh vực khoa học máy tính và khoa học dữ liệu. Nó được thiết kế để thực hiện các tính toán khoa học, đặc biệt với dữ liệu lớn. NumPy cung cấp cấu trúc dữ liệu chủ yếu là mảng nhiều chiều, giúp tối ưu hóa hiệu suất tính toán, đặc biệt khi làm việc với ma trận."
+      },
+      {
+        "heading": "Phần 2: Cấu trúc dữ liệu của NumPy",
+        "content": "Cấu trúc dữ liệu chính của NumPy bao gồm các mảng N-dimensional hay ndarrays. Các loại mảng trong NumPy bao gồm scalar (0D), vector (1D), matrix (2D), và tensor (nD với n>2). NumPy cho phép tạo và truy xuất các phần tử trong các mảng này một cách hiệu quả. Sự khác biệt giữa NumPy và list của Python là về kích thước, hiệu suất và chức năng, với NumPy chiếm ít bộ nhớ hơn và thực hiện nhanh hơn."
+      },
+      {
+        "heading": "Phần 3: Các hàm cơ bản và thuộc tính của NumPy",
+        "content": "NumPy cung cấp nhiều hàm cơ bản để tạo, thao tác và truy xuất dữ liệu từ mảng. Các thuộc tính của mảng trong NumPy giúp tối ưu hóa các phép toán, đặc biệt là các phép toán đại số. Điều này giúp NumPy thực hiện các phép toán với thời gian ngắn hơn nhiều so với khi sử dụng list thông thường."
+      },
+      {
+        "heading": "Phần 4: Hàm và phương thức trong NumPy",
+        "content": "Thư viện NumPy có một bộ sưu tập phong phú các hàm và phương thức, giúp thực hiện các thao tác phức tạp trên dữ liệu với sự hỗ trợ của các kiểu dữ liệu như integer, boolean, float, complex float, và các loại dữ liệu thời gian. Những chức năng này làm cho NumPy trở thành một công cụ mạnh mẽ và linh hoạt trong xử lý dữ liệu khoa học."
+      }
+    ]
+  },
+  "multipleChoice": [
+    {
+      "question": "1. NumPy là thư viện của ngôn ngữ lập trình nào?",
+      "options": [
+        "JavaScript",
+        "Java",
+        "Python",
+        "C++"
+      ]
+    },
+    {
+      "question": "2. Kiểu dữ liệu nào không thuộc NumPy?",
+      "options": [
+        "List",
+        "Integer",
+        "Boolean",
+        "Complex float"
+      ]
+    },
+    {
+      "question": "3. Đâu là cấu trúc dữ liệu chính của NumPy?",
+      "options": [
+        "List",
+        "Tuple",
+        "Mảng nhiều chiều",
+        "Dictionary"
+      ]
+    },
+    {
+      "question": "4. NumPy có ưu điểm gì so với list của Python?",
+      "options": [
+        "Hiệu suất kém hơn",
+        "Chiếm nhiều bộ nhớ hơn",
+        "Thực hiện nhanh hơn",
+        "Không có ưu điểm"
+      ]
+    },
+    {
+      "question": "5. NumPy được sử dụng chủ yếu trong lĩnh vực nào?",
+      "options": [
+        "Phân tích văn bản",
+        "Tính toán khoa học",
+        "Thiết kế đồ họa",
+        "Lập trình web"
+      ]
+    }
+  ],
+  "essayQuestions": [
+    "🖋️ Câu hỏi tự luận:",
+    "1. Phân tích sự khác biệt giữa cấu trúc dữ liệu list của Python và mảng của NumPy về mặt hiệu suất và tính năng.",
+    "2. Hãy thảo luận về tầm quan trọng của NumPy trong việc xử lý dữ liệu lớn và cách nó tối ưu hóa các phép toán đại số."
+  ]
+}

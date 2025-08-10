@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.*;
 
-import org.hibernate.type.SqlTypes;
-
 
 import java.time.Instant;
 import java.util.*;
@@ -35,15 +33,14 @@ public class Summary {
     @Column(name = "sections", columnDefinition = "json")
 //    @JdbcTypeCode(SqlTypes.JSON)
     @Type(JsonType.class)
-    private List <Section> sections;
+    private List <SectionDTO> sections;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false, insertable = false)
     private Instant createdAt;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "update_at")
+    @Column(name = "update_at", insertable = false)
     private Instant updateAt;
+
 
     @ColumnDefault("'PUBLISH'")
     @Lob
@@ -60,7 +57,7 @@ public class Summary {
         this.id = id;
     }
 
-    public Summary(Integer id, String title, List <Section> sections, String status) {
+    public Summary(Integer id, String title, List <SectionDTO> sections, String status) {
         this.id = id;
         this.title = title;
         this.sections = sections;

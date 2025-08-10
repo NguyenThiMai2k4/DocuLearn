@@ -41,12 +41,10 @@ public class Question {
     @Column(name = "response_type", nullable = false)
     private String responseType;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "created_at")
+    @Column(name = "created_at", updatable = false, insertable = false)
     private Instant createdAt;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
-    @Column(name = "update_at")
+    @Column(name = "update_at", insertable = false)
     private Instant updateAt;
 
     @OneToMany(mappedBy = "question")

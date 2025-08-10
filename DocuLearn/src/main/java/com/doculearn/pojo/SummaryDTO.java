@@ -10,5 +10,6 @@ import java.util.List;
 public class SummaryDTO {
     private String title;
     private List<SectionDTO> sections;
+    public SummaryDTO(){}
 
 }

@@ -11,6 +11,8 @@ public class DataFileDTO {
     private SummaryDTO summary;
     private List<MultipleChoiceQuestionDTO> multipleChoice;
     private List<String> essayQuestions;
+    public  DataFileDTO() {
+    }
 
 
 

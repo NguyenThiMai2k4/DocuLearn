@@ -39,7 +39,7 @@
                 <!-- Nút hành động -->
                 <div class="col-md-6 text-end">
                     <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
-                    <a th:href="@{/summary/add}" class="btn btn-success">+ Thêm bài viết mới</a>
+                    <a th:href="@{'/course/' + ${courseId} + '/summary/add'}" class="btn btn-success">+ Thêm bài học</a>
                 </div>
             </div>
 
@@ -54,9 +54,8 @@
                 <th>Ngày tạo</th>
                 <th>Ngày cập nhật</th>
                 <th>Trạng thái</th>
-                <th>Danh sách câu hỏi</th>
                 <th></th>
-                <th></th>
+
 
             </tr>
             </thead>
@@ -67,7 +66,7 @@
 
                 <td th:text="${s.title}" class="text-start">Nội dung bài viết</td>
 
-                <td  class="text-start">Nội dung bài viết</td>
+                <td  class="text-start" th:text="${s.sections}">Nội dung bài viết</td>
 
                 <!-- Ngày tạo -->
                 <td th:text="${s.createdAt}">01/01/2024</td>
@@ -78,31 +77,18 @@
                 <!-- Chế độ hiển thị -->
                 <td th:text="${s.status}"></td>
 
-                <td>
-                    <div class="d-flex flex-column gap-2">
-
-<!--                        <a th:href="@{'/summary/{id}/question' + ${s.id}}"  class="btn btn-info">Danh sách câu hỏi</a>-->
-
-                    </div>
-                </td>
 
                 <!-- delete/xoa -->
                 <td>
                     <div class="d-flex flex-column gap-2">
 
-                        <a th:href="@{'/summary/edit/' + ${s.id}}"  class="btn btn-info">Update</a>
+                        <a th:href="@{'/course/' + ${courseId} + '/summary/' + ${s.id} + '/edit'}"  class="btn btn-info">Update</a>
 
-                        <a th:href="@{/summary/delete(id=${s.id})}" th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
+                        <a th:href="@{'/course/' + ${courseId} + '/summary/delete'(id=${s.id})}"
+                           th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
                     </div>
                 </td>
 
-
-
-                <td>
-                    <a th:href="@{/summary/{id}/detail(id=${s.id})}">
-                    <button type="button" class="btn btn-info"> Xem chi tiết </button>
-                    </a>
-                </td>
 
             </tr>
             </tbody>

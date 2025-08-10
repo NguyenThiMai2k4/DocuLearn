@@ -45,7 +45,7 @@ public class CourseController {
     }
 
     // ============= UPDATE Course =================
-    @GetMapping("/course/edit/{courseId}")
+    @GetMapping("/course/{courseId}/edit")
     public String createCourse(@PathVariable("courseId") int courseId, Model model) {
         model.addAttribute("status", Status.values());
         model.addAttribute("course", this.courseService.getCourseById(courseId));

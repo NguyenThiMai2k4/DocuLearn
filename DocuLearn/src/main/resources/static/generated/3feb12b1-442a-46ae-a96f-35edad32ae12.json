@@ -1,0 +1,56 @@
+📌 Tóm tắt:
+
+**Chương 1: Nhập môn React Native**
+
+**Phần 1: Giới thiệu**
+React Native là một framework Javascript cho phép xây dựng ứng dụng di động cho iOS và Android bằng cách sử dụng các native component thay vì web component. Điều này giúp mã nguồn viết trong React Native được biên dịch thành native code cho cả hai hệ điều hành. Với React Native, chỉ cần sử dụng Javascript để phát triển ứng dụng di động. Ngoài ra, React Native còn có sự hỗ trợ mạnh mẽ từ cộng đồng lập trình viên lớn.
+
+**Phần 2: Ứng dụng đầu tiên**
+Để bắt đầu với React Native, cần cài đặt NodeJS và các công cụ tạo project. Sau đó, thực thi lệnh npx expo start để khởi động ứng dụng. Có thể chạy ứng dụng trên expo client bằng cách quét mã QR. Để chạy trên máy giả lập Android, cần cài đặt Android Studio và tạo AVD. Các lệnh npm start, s, và a được sử dụng để chạy lại project.
+
+**Phần 3: Debugging**
+Quá trình debugging trong React Native có thể được thực hiện bằng cách sử dụng Command + M trên Android và Command + D trên iOS. Điều này giúp kiểm tra và sửa lỗi trong quá trình phát triển ứng dụng.
+
+**Phần 4: Props**
+Props là các đối số được truyền vào component và không thể thay đổi giá trị tại component con. Nếu component có constructor, props phải được truyền vào constructor và cho React.Component bằng phương thức super. Props giúp truyền dữ liệu giữa các component trong ứng dụng.
+
+**Phần 5: State**
+State là đối tượng lưu trữ giá trị thuộc tính của component, có thể thay đổi bất cứ khi nào bằng phương thức this.setState(). Khi state thay đổi, component sẽ nạp lại (re-render). State chỉ có hiệu lực trong phạm vi component, và các thuộc tính của state có thể được truy cập bằng this.state.propertyName.
+
+❓ Câu hỏi trắc nghiệm:
+
+1. React Native sử dụng ngôn ngữ nào để phát triển ứng dụng di động?
+   A. Python
+   B. Java
+   C. Javascript
+   D. C++
+
+2. Để chạy ứng dụng React Native trên expo client, cần thực hiện bước nào sau đây?
+   A. Cài đặt Visual Studio Code
+   B. Quét mã QR
+   C. Tạo máy ảo AVD
+   D. Sử dụng trình duyệt web
+
+3. Props trong React Native có tính chất gì?
+   A. Có thể thay đổi giá trị tại component con
+   B. Không thể thay đổi giá trị tại component con
+   C. Không thể truyền vào component
+   D. Không liên quan đến component
+
+4. Phương thức nào được sử dụng để thay đổi giá trị của state trong React Native?
+   A. this.changeState()
+   B. this.setState()
+   C. this.updateState()
+   D. this.modifyState()
+
+5. Giai đoạn nào trong vòng đời component xảy ra khi một component được gỡ khỏi DOM?
+   A. Mounting
+   B. Updating
+   C. Unmounting
+   D. Rendering
+
+🖋️ Câu hỏi tự luận:
+
+1. Phân tích vai trò của Props và State trong React Native và cách chúng tương tác với nhau để quản lý dữ liệu trong ứng dụng.
+
+2. Trình bày chi tiết các bước cần thực hiện để tạo và chạy ứng dụng React Native đầu tiên trên cả thiết bị thật và máy giả lập.

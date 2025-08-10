@@ -1,0 +1,53 @@
+📌 Tóm tắt:
+
+**Chương 2: Ngôn Ngữ Lập Trình Thư Viện NumPy**
+
+**Phần 1: Giới thiệu thư viện NumPy**
+NumPy là một thư viện mã nguồn mở cho Python, hỗ trợ tính toán khoa học và xử lý dữ liệu lớn. Được viết tắt từ "Numeric Python," NumPy cung cấp khả năng tính toán ma trận và các phép toán đại số cơ bản. Khác với list trong Python, NumPy cung cấp các mảng nhiều chiều (ndarrays), giúp xử lý dữ liệu hiệu quả hơn và tiết kiệm bộ nhớ.
+
+**Phần 2: Cấu trúc dữ liệu của NumPy**
+NumPy sử dụng các cấu trúc dữ liệu chính như scalar (0D), vector (1D), matrix (2D), và tensor (nD, n > 2). Mảng trong NumPy có thể truy xuất và thao tác dễ dàng nhờ vào cú pháp đơn giản. Việc thao tác trên các mảng đa chiều giúp tối ưu hóa hiệu suất khi xử lý dữ liệu lớn.
+
+**Phần 3: Các hàm cơ bản trong NumPy**
+NumPy cung cấp các hàm cơ bản để tạo và thao tác trên mảng. Các hàm này hỗ trợ việc tính toán nhanh chóng và hiệu quả hơn so với việc sử dụng list thông thường, đặc biệt là khi làm việc với ma trận lớn. 
+
+**Phần 4: Thuộc tính của mảng trong NumPy**
+Mảng trong NumPy có nhiều thuộc tính hữu ích như kích thước, kiểu dữ liệu, và khả năng truy xuất nhanh chóng. NumPy cho phép thực hiện các phép toán đại số một cách tối ưu nhờ vào các thuộc tính này.
+
+**Phần 5: Hàm và Phương thức trong NumPy**
+NumPy cung cấp nhiều hàm và phương thức hỗ trợ cho việc tính toán khoa học, bao gồm các phép toán đại số và xử lý dữ liệu phức tạp. Việc sử dụng NumPy có thể giảm đáng kể thời gian tính toán so với các công cụ truyền thống khác.
+
+❓ Câu hỏi trắc nghiệm:
+1. NumPy là viết tắt của cụm từ nào?
+   A. Numeric Programming
+   B. Numeric Python
+   C. Numerical Processing
+   D. Numeric Protocol
+
+2. Cấu trúc dữ liệu chính của NumPy là gì?
+   A. List
+   B. Tuple
+   C. Ndarrays
+   D. Dictionary
+
+3. NumPy giúp tối ưu hóa điều gì khi xử lý dữ liệu?
+   A. Giao diện người dùng
+   B. Tốc độ và hiệu suất
+   C. Bảo mật dữ liệu
+   D. Tính khả dụng
+
+4. Một tensor trong NumPy có bao nhiêu chiều?
+   A. 0
+   B. 1
+   C. 2
+   D. Nhiều hơn 2
+
+5. Tại sao NumPy lại hiệu quả hơn list trong Python?
+   A. Giao diện thân thiện
+   B. Sử dụng ít bộ nhớ hơn và thực hiện nhanh hơn
+   C. Tính bảo mật cao
+   D. Hỗ trợ đa ngôn ngữ
+
+🖋️ Câu hỏi tự luận:
+1. Phân tích sự khác biệt giữa cấu trúc dữ liệu list và ndarray trong Python và NumPy, và nêu rõ lợi ích khi sử dụng NumPy.
+2. Trình bày cách NumPy tối ưu hóa hiệu suất xử lý dữ liệu và hỗ trợ các phép toán đại số trên các tập dữ liệu lớn.

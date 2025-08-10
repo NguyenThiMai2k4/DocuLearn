@@ -8,4 +8,6 @@ import lombok.Data;
 public class SectionDTO {
     private String heading;
     private String content;
+    public SectionDTO() {}
+
 }

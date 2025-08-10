@@ -89,7 +89,7 @@
                 <td>
                     <div class="d-flex flex-column gap-2">
 
-                        <a th:href="@{'/course/edit/' + ${c.id}}"  class="btn btn-info">Update</a>
+                        <a th:href="@{'/course/' + ${c.id} + '/edit'}"  class="btn btn-info">Update</a>
 
                         <a th:href="@{/course/delete(id=${c.id})}" th:onclick="return confirm('Bạn có muốn xóa ?')" class="btn btn-danger">Delete</a>
                     </div>

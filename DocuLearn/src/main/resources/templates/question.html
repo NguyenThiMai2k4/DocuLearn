@@ -39,7 +39,7 @@
                 <!-- Nút hành động -->
                 <div class="col-md-6 text-end">
                     <button type="submit" class="btn btn-primary me-2">Tìm kiếm</button>
-                    <a th:href="@{/question/add}" class="btn btn-success">+ Thêm bài viết mới</a>
+                    <a th:href="@{'/course/' + ${courseId} + '/question-option/add'}" class="btn btn-success">+ Thêm bài viết mới</a>
                 </div>
             </div>
 

@@ -1,8 +1,7 @@
 package com.doculearn.controllers;
 
 import com.doculearn.enums.Status;
-import com.doculearn.pojo.Course;
-import com.doculearn.pojo.Summary;
+import com.doculearn.pojo.*;
 import com.doculearn.service.CourseService;
 import com.doculearn.service.SummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/course/{id}/detail")
+@RequestMapping("/course/{id}")
 public class SummaryController {
     @Autowired
     private CourseService courseService;
@@ -21,7 +21,8 @@ public class SummaryController {
     @Autowired
     private SummaryService summaryService;
 
-    @GetMapping("")
+
+    @GetMapping("/detail")
     public String summaryView(@PathVariable("id") int courseId, Model model) {
         List<Summary> summaries = this.summaryService.getAllSummaryByCourseId(courseId);
 
@@ -34,37 +35,54 @@ public class SummaryController {
         System.out.println("==================== courseId: \n"+courseId);
         model.addAttribute("courseId", courseId); // use in base.html
         model.addAttribute("summaries",summaries);
+
         return "summary";
     }
 
-    //Mapping den createCourse.html
+    //Mapping den createSummary.html
     @GetMapping("/summary/add")
-    public String createSummary(Model model) {
+    public String createSummary(@PathVariable("id") int courseId, Model model) {
+        DataFileDTO data= new DataFileDTO();
+        // Khởi tạo SummaryDTO bên trong
+        SummaryDTO summaryDTO = new SummaryDTO();
+        summaryDTO.setSections(new ArrayList<>());
 
+        // Thêm 1 Section rỗng để hiển thị trong form
+        summaryDTO.getSections().add(new SectionDTO());
+        data.setSummary(summaryDTO);
         model.addAttribute("summary", new Summary());
-        return "create_summary";
-    }
-
-    // ============= ADD Course =================
-    @PostMapping("/add-summary")
-    public String addSummary(@ModelAttribute("summary") Summary summary) {
-        this.summaryService.createSummary(summary);
-        return "redirect:/";
-    }
-
-    // ============= UPDATE Course =================
-    @GetMapping("/course/edit/{courseId}")
-    public String updateSummary(@PathVariable("courseId") int courseId, Model model) {
+        model.addAttribute("courseId", courseId);
+        model.addAttribute("dataFile",data);
         model.addAttribute("status", Status.values());
-        model.addAttribute("course", this.courseService.getCourseById(courseId));
-        return "create_summary";
+        return "createSummary";
+    }
+
+    // ============= ADD Summary =================
+    @PostMapping("/add-summary")
+    public String addSummary(@ModelAttribute("summary") Summary summary, @ModelAttribute("dataFile") DataFileDTO dataFile,
+                             @PathVariable("id") int courseId) {
+        System.out.println("course id : "+courseId);
+//        summary.setSections(dataFile.getSummary().getSections());
+        summary.setCourse(this.courseService.getCourseById(courseId));
+        this.summaryService.createSummary(summary);
+        return "redirect:/course/" + courseId + "/detail";
+    }
+
+    // ============= UPDATE Summary =================
+    @GetMapping("/summary/{summaryId}/edit")
+    public String updateSummary(@PathVariable("summaryId") int summaryId,
+                                @PathVariable("id") int courseId, Model model) {
+        model.addAttribute("status", Status.values());
+        model.addAttribute("courseId", courseId);
+        model.addAttribute("summary", this.summaryService.getSummaryById(summaryId));
+        return "createSummary";
     }
 
     // ============= Delete Course =================
-    @GetMapping("/course/delete")
-    public String deleteCourse(@RequestParam("id") int courseId) {
-        this.courseService.deleteCourse(courseId);
-        return "redirect:/";
+    @GetMapping("/summary/delete")
+    public String deleteSummary(@RequestParam("id") int summaryId, @PathVariable("id") int courseId) {
+        this.summaryService.deleteSummary(summaryId);
+        return "redirect:/course/" + courseId + "/detail";
     }
 
 
