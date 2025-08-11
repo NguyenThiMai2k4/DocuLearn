@@ -1,60 +1,132 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<!--    Not-null reponsetype-->
-
     <title>Tạo Câu hỏi và Option</title>
     <th:block th:replace="base :: styles"></th:block>
-    <script>
-        function addOptionRow() {
-            const optionsDiv = document.getElementById("optionsContainer");
-            const index = optionsDiv.querySelectorAll(".option-item").length;
 
-            const newOption = document.createElement("div");
-            newOption.classList.add("option-item");
-            newOption.innerHTML = `
-                <input type="text" name="options[${index}].content" placeholder="Nội dung Option" required/>
-                <label>Đúng?</label>
-                <input type="checkbox" name="options[${index}].correct"/>
+    <script>
+        function addQuestionBlock() {
+            const container = document.getElementById("questionsContainer");
+            const newIndex = container.querySelectorAll(".question-block").length;
+
+            const block = document.createElement("div");
+            block.classList.add("question-block", "mb-4");
+            block.dataset.index = newIndex;
+
+            block.innerHTML = `
+                <label>Nội dung câu hỏi & ResponseType</label>
+                <div class="input-group mb-2">
+                    <input type="text" name="questions[${newIndex}].content" class="form-control" placeholder="Nhập câu hỏi" required/>
+                    <select name="questions[${newIndex}].responseType" class="form-select bg-light" onchange="toggleOptions(this)">
+                        <option value="" disabled selected>Chọn kiểu trả lời</option>
+                        <option value="TEXT">Text</option>
+                        <option value="SINGLE_CHOICE">SINGLE_CHOICE</option>
+                    </select>
+                </div>
+                <div class="options-section" style="display:none;">
+                    <h6>Danh sách Option</h6>
+                    <div class="options-container"></div>
+                </div>
             `;
-            optionsDiv.appendChild(newOption);
+            container.appendChild(block);
         }
+
+        function toggleOptions(selectEl) {
+            const block = selectEl.closest('.question-block');
+            const optionsSection = block.querySelector('.options-section');
+            const optionsContainer = optionsSection.querySelector('.options-container');
+            const index = block.dataset.index;
+
+            if (selectEl.value === 'SINGLE_CHOICE') {
+                optionsSection.style.display = 'block';
+                optionsContainer.innerHTML = ''; // clear cũ
+
+                // Tạo 4 option mặc định
+                for (let i = 0; i < 4; i++) {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.name = `questions[${index}].options[${i}].content`;
+                    input.placeholder = `Nội dung Option ${i + 1}`;
+                    input.className = 'form-control mb-1';
+                    input.required = true; // chỉ required khi hiển thị
+                    optionsContainer.appendChild(input);
+                }
+            } else {
+                // Ẩn và bỏ required
+                const optionInputs = optionsContainer.querySelectorAll('input');
+                optionInputs.forEach(inp => inp.required = false);
+                optionsSection.style.display = 'none';
+                optionsContainer.innerHTML = '';
+            }
+        }
+
+
+
+
     </script>
 </head>
 <body>
 <div th:replace="base :: header"></div>
 <main class="container">
     <h1 style="text-align: center">Tạo Câu hỏi</h1>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <!-- Không dùng th:object vì là List -->
+                <form th:action="@{'/course/' + ${courseId} + '/question-option/add'}"
+                      th:object="${questionWrapper}" method="post">
 
-<form th:action="@{'/course/' + ${courseId} + '/question-option/add'}" th:object="${questionDTO}" method="post">
-    <div class="mb-3 mt-3">
-        <label for="summaries">Thuộc Summary ?</label>
-        <select class="form-select" id="summaries" th:field="*{summaryId}">
-            <option th:each="m : ${summaries}"
-                    th:value="${m.id}"
-                    th:text="${m.id}">chọn SummaryId</option>
-        </select>
-    </div>
+                    <!-- Nếu Summary áp dụng cho tất cả câu hỏi -->
+                    <div class="mb-3 mt-3">
+                        <label for="summaries">Thuộc Summary ?</label>
+                        <select class="form-select" id="summaries" name="summaryId">
+                            <option value="" disabled selected>Chọn SummaryId</option>
+                            <option th:each="m : ${summaries}" th:value="${m.id}" th:text="${m.id}"></option>
+                        </select>
+                    </div>
+
+                    <div id="questionsContainer">
+                        <!-- Loop qua danh sách câu hỏi -->
+                        <div class="question-block mb-4"
+                             th:each="q, iterStat : *{questions}"
+                             th:data-index="${iterStat.index}">
+
+                            <label>Nội dung câu hỏi &amp; ResponseType</label>
+                            <div class="input-group mb-2">
+                                <!-- Nội dung câu hỏi -->
+                                <input type="text" class="form-control"
+                                       th:field="*{questions[__${iterStat.index}__].content}"
+                                       placeholder="Nhập câu hỏi" required />
+
+                                <!-- ResponseType -->
+                                <select class="form-select bg-light"
+                                        th:field="*{questions[__${iterStat.index}__].responseType}"
+                                        onchange="toggleOptions(this)">
+                                    <option value="" disabled selected>Chọn kiểu trả lời</option>
+                                    <option th:each="m : ${responseType}"
+                                            th:value="${m}"
+                                            th:text="${m.displayName}">responseType</option>
+
+                                </select>
+                            </div>
+
+                            <!-- Options -->
+                            <div class="options-section" style="display:none;">
+                                <h6>Danh sách Option</h6>
+                                <div class="options-container"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-outline-info" onclick="addQuestionBlock()">+ Thêm câu hỏi</button>
+                    <br/><br/>
+                    <button type="submit" class="btn btn-primary">Lưu câu hỏi</button>
+                </form>
 
 
-
-    <label>Nội dung câu hỏi:</label><br/>
-    <input type="text" th:field="*{content}" placeholder="Nhập câu hỏi" required/><br/><br/>
-
-    <h3>Danh sách Option</h3>
-    <div id="optionsContainer">
-        <div class="option-item" th:each="opt, iterStat : *{options}">
-            <input type="text" th:field="*{options[__${iterStat.index}__].content}" placeholder="Nội dung Option" required/>
-            <label>Đúng?</label>
-            <input type="checkbox" th:field="*{options[__${iterStat.index}__].isCorrect}"/>
+            </div>
         </div>
     </div>
-
-    <button type="button" onclick="addOptionRow()">+ Thêm Câu hỏi</button>
-    <br/><br/>
-
-    <button type="submit">Lưu câu hỏi</button>
-</form>
 </main>
 </body>
 </html>

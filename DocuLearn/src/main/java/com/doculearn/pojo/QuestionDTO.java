@@ -10,6 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 public class QuestionDTO {
     private String content;
+    private String responseType;
+
     private List<QuestionOption> options = new ArrayList<>();
     private int summaryId;
     public QuestionDTO() {}

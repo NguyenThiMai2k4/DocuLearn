@@ -1,6 +1,7 @@
 package com.doculearn.service;
 
 
+import com.doculearn.enums.ResponseType;
 import com.doculearn.pojo.*;
 import com.doculearn.repositories.CourseRepository;
 import com.doculearn.repositories.OptionRepository;
@@ -64,7 +65,7 @@ public class FileService {
             question.setCourse(course);
             question.setSummary(summary);
             question.setContent(mc.getQuestion());
-            question.setResponseType("SINGLE_CHOICE");
+            question.setResponseType(ResponseType.SINGLE_CHOICE);
             this.questionRepository.save(question);
 
 //            // options có thể là List hoặc Map
@@ -97,7 +98,7 @@ public class FileService {
                 question.setCourse(course);
                 question.setSummary(summary);
                 question.setContent(essay);
-                question.setResponseType("TEXT"); // kiểu tự luận
+                question.setResponseType(ResponseType.TEXT); // kiểu tự luận
                 this.questionRepository.save(question);
             }
         }

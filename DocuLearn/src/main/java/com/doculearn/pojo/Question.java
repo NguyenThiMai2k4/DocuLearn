@@ -1,5 +1,6 @@
 package com.doculearn.pojo;
 
+import com.doculearn.enums.ResponseType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,8 +39,9 @@ public class Question {
 
     @ColumnDefault("'SINGLE_CHOICE'")
     @Lob
+    @Enumerated(EnumType.STRING)
     @Column(name = "response_type", nullable = false)
-    private String responseType;
+    private ResponseType responseType;
 
     @Column(name = "created_at", updatable = false, insertable = false)
     private Instant createdAt;
@@ -47,7 +49,7 @@ public class Question {
     @Column(name = "update_at", insertable = false)
     private Instant updateAt;
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<QuestionOption> questionOptions = new LinkedHashSet<>();
 
     public Question() {}
@@ -56,7 +58,7 @@ public class Question {
         this.id = id;
     }
 
-    public Question(Integer id, String content, String responseType) {
+    public Question(Integer id, String content, ResponseType responseType) {
         this.id = id;
         this.content = content;
         this.responseType = responseType;

@@ -46,14 +46,17 @@ public class QuestionOption {
     //so sanh 2 doi tuong thong qua primaryKey
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof QuestionOption that)) return false;
-        return Objects.equals(id, that.id);
+        if (this == o) return true;
+        if (!(o instanceof QuestionOption)) return false;
+        QuestionOption other = (QuestionOption) o;
+        return content != null && content.equals(other.getContent());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(content);
     }
+
 
     @Override
     public String toString() {
