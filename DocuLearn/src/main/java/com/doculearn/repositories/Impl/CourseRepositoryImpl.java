@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Transactional // quản lý các giao dịch - CRUD: được thực hiện như 1 đơn vị thống nhất
 public class CourseRepositoryImpl {
 
+
 }

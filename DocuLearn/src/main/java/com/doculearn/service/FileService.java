@@ -46,12 +46,12 @@ public class FileService {
         System.out.println("Nội dung JSON vừa tạo: " +data.toString());
 
 
-//        //Lấy course
+
         Course course = this.courseRepository.findById(courseId)
                 .orElseThrow(() -> new RuntimeException("Course not found"));
 
         List<SectionDTO> sections= data.getSummary().getSections();
-//        // Lưu summary nếu cần
+//        // Lưu summary
         Summary summary = new Summary();
         summary.setTitle(data.getSummary().getTitle());
         summary.setCourse(course);
@@ -75,7 +75,7 @@ public class FileService {
                     QuestionOption qo = new QuestionOption();
                     qo.setQuestion(question);
                     qo.setContent(opt.toString().replaceFirst("^-?\\s*[A-D]\\.?\\s*", "").trim());
-                    qo.setIsCorrect(false); // hoặc set true nếu có đáp án đúng
+                    qo.setIsCorrect(false);
                     this.optionRepository.save(qo);
                 }
             } else if (mc.getOptions() instanceof Map) {
@@ -98,7 +98,7 @@ public class FileService {
                 question.setCourse(course);
                 question.setSummary(summary);
                 question.setContent(essay);
-                question.setResponseType(ResponseType.TEXT); // kiểu tự luận
+                question.setResponseType(ResponseType.TEXT);
                 this.questionRepository.save(question);
             }
         }

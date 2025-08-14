@@ -38,19 +38,11 @@
             const index = block.dataset.index;
 
             if (selectEl.value === 'SINGLE_CHOICE') {
-
                 optionsSection.style.display = 'block';
                 optionsContainer.innerHTML = ''; // clear cũ
 
                 // Tạo 4 option mặc định
                 for (let i = 0; i < 4; i++) {
-
-                    // hidden input id
-                    const hiddenId = document.createElement('input');
-                    hiddenId.type = 'hidden';
-                    hiddenId.name = `questions[${index}].options[${i}].id`;
-                    hiddenId.value = '';
-
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.name = `questions[${index}].options[${i}].content`;
@@ -98,7 +90,7 @@
                         <div class="question-block mb-4"
                              th:each="q, iterStat : *{questions}"
                              th:data-index="${iterStat.index}">
-                            <input type="hidden" th:field="*{questions[__${iterStat.index}__].id}" />
+
                             <label>Nội dung câu hỏi &amp; ResponseType</label>
                             <div class="input-group mb-2">
                                 <!-- Nội dung câu hỏi -->
@@ -129,16 +121,6 @@
                     <button type="button" class="btn btn-outline-info" onclick="addQuestionBlock()">+ Thêm câu hỏi</button>
                     <br/><br/>
                     <button type="submit" class="btn btn-primary">Lưu câu hỏi</button>
-
-                    <div class="mb-3 mt-3">
-
-
-                        <!--            <input type="hidden" th:field="*{image}" />-->
-                        <button class="btn btn-primary">
-                            <span th:if="${question.id == null}">Thêm bài viết</span>
-                            <span th:unless="${question.id == null}">Cập nhật bài viết</span>
-                        </button>
-                    </div>
                 </form>
 
 

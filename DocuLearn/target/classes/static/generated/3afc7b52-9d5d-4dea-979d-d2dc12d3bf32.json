@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "title": "**Chương 3: Trực quan Dữ liệu**",
+    "sections": [
+      {
+        "heading": "Phần 1: Giới thiệu về trực quan dữ liệu",
+        "content": "Trực quan dữ liệu là quá trình biểu diễn dữ liệu dưới dạng đồ họa như biểu đồ và đồ thị nhằm giúp người dùng dễ dàng quan sát, hiểu và truyền đạt thông tin từ dữ liệu. Mục tiêu là chuyển đổi dữ liệu thành thông tin trực quan dễ hiểu, giúp người đọc cảm nhận được những hiểu biết sâu sắc (insights). Trực quan hóa dữ liệu có thể đối mặt với thách thức trong việc so sánh dữ liệu lớn nhưng cũng giúp thể hiện thông tin tóm tắt và dễ nhớ hơn."
+      },
+      {
+        "heading": "Phần 2: Sức mạnh của hình ảnh",
+        "content": "Hình ảnh có sức mạnh truyền tải thông tin lớn, với 90% thông tin tới não là hình ảnh và xử lý nhanh hơn văn bản tới 60.000 lần. Colin Ware đã nhấn mạnh rằng hình ảnh trực quan luôn chiếm ưu thế trong truyền tải thông tin. Hình ảnh giúp khuyếch đại thông điệp và thể hiện ý nghĩa của dữ liệu một cách rõ ràng."
+      },
+      {
+        "heading": "Phần 3: Tại sao Data Visualization quan trọng",
+        "content": "Trực quan hóa dữ liệu giúp khuyếch đại thông điệp, tiết kiệm thời gian, và hỗ trợ ra quyết định nhanh hơn. Nó giúp dễ dàng chia sẻ thông tin giữa các phòng ban và đối tượng khác nhau, đồng thời tăng khả năng truyền tải thông điệp và đưa ra các quyết định dựa trên dữ liệu."
+      },
+      {
+        "heading": "Phần 4: Các loại cơ bản của trực quan dữ liệu",
+        "content": "Có hai loại trực quan hóa dữ liệu cơ bản: Exploration và Explanation. Exploration giúp hiểu rõ dữ liệu, xu hướng và sự phân bố, trong khi Explanation dùng để truyền đạt thông tin đã được phân tích tới người dùng."
+      }
+    ]
+  },
+  "multipleChoice": [
+    {
+      "question": "1. Trực quan dữ liệu giúp người dùng:",
+      "options": [
+        "Tiết kiệm thời gian",
+        "Tăng chi phí",
+        "Giảm hiệu suất",
+        "Phức tạp hóa vấn đề"
+      ]
+    },
+    {
+      "question": "2. Theo Colin Ware, trong truyền tải thông tin, yếu tố nào chiếm ưu thế?",
+      "options": [
+        "Văn bản",
+        "Hình ảnh trực quan",
+        "Âm thanh",
+        "Màu sắc"
+      ]
+    },
+    {
+      "question": "3. Một trong những lợi ích của trực quan dữ liệu là:",
+      "options": [
+        "Khó khăn trong việc ra quyết định",
+        "Dễ dàng chia sẻ thông tin",
+        "Tăng độ phức tạp của dữ liệu",
+        "Giảm sự hiểu biết"
+      ]
+    },
+    {
+      "question": "4. Trong trực quan hóa dữ liệu, loại nào giúp hiểu rõ xu hướng dữ liệu?",
+      "options": [
+        "Exploration",
+        "Explanation",
+        "Visualization",
+        "Data Mining"
+      ]
+    },
+    {
+      "question": "5. Trực quan dữ liệu không giúp:",
+      "options": [
+        "Phân tích dữ liệu lớn nhanh chóng",
+        "Tạo sự nhầm lẫn về thông tin",
+        "Khuyếch đại thông điệp",
+        "Truyền tải thông tin rõ ràng"
+      ]
+    }
+  ],
+  "essayQuestions": [
+    "🖋️ Câu hỏi tự luận:",
+    "1. Phân tích vai trò của trực quan dữ liệu trong việc hỗ trợ ra quyết định kinh doanh. Hãy đưa ra ví dụ cụ thể để minh họa.",
+    "2. So sánh và đối chiếu giữa hai loại trực quan hóa dữ liệu: Exploration và Explanation. Trong bối cảnh nào mỗi loại sẽ phát huy tối đa hiệu quả?"
+  ]
+}
