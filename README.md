@@ -8,8 +8,7 @@
 4. Cài đặt và chạy thử:
    4.1. Yêu cầu hệ thống
    - Java: JDK 23.0.2
-   - CSDL: MySQL
-   - npm : 
+   - CSDL: MySQL 
    - Git: để clone poject
 
   4.2. Clone project 
@@ -32,7 +31,7 @@
       spring.servlet.multipart.max-file-size=20MB
       spring.servlet.multipart.max-request-size=20MB
     
-      #key openAPI không thể puplic. Cần đến link: <i>https://platform.openai.com/api-keys</i> Tạo Key và paste key vào "spring.ai.openai.api-key"
+      #key openAPI không thể public. Cần đến link: <i>https://platform.openai.com/api-keys</i> Tạo Key và paste key vào "spring.ai.openai.api-key"
       spring.ai.openai.api-key="path your key-openAPI"
       
       #database source 
@@ -46,10 +45,10 @@
       spring.jpa.properties.hibernate.format_sql=true
 
    4.5.  Chạy web test
-      b1: chạy lệnh "mvn clean install" trong terminal để build các thư viện trong project.
-      b2: run file "DemoApplication".
-      b3: Đợi 1 khoảng thời gian để hệ thống đọc các file và dữ liệu.
-      b4: Mở trình duyệt chrome nhập đường link: http://localhost:8080/doculearn/  
+      - b1: chạy lệnh "mvn clean install" trong terminal để build các thư viện trong project.
+      - b2: run file "DemoApplication".
+      - b3: Đợi 1 khoảng thời gian để hệ thống đọc các file và dữ liệu.
+      - b4: Mở trình duyệt chrome nhập đường link: http://localhost:8080/doculearn/  
       HOÀN THÀNH
       
   
