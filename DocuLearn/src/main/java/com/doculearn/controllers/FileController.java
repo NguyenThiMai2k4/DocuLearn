@@ -54,6 +54,27 @@ public class FileController {
         String prompt = openAiService.buildPrompt(content);
         String result = openAiService.callOpenAI(prompt);
 
+
+        openAiService.generateJsonFiles(result, fileId);
+        System.out.println("================== RESULT GENNERATED: \n"+result);
+
+        Path generatedFilePath = Paths.get("src/main/resources/static/generated", fileId + ".json");
+
+        fileService.importFromJson(generatedFilePath,courseId);
+
+        // Trả kết quả JSON
+        String baseUrl = "/generated/";
+        return ResponseEntity.ok(Map.of(
+                "json", baseUrl + fileId + ".json",
+                "fileName", originalFilename,
+                "contentLength", result.length()
+        ));
+
+
+    }
+
+}
+
 //        String result = """
 //        {
 //          "summary": {
@@ -100,23 +121,3 @@ public class FileController {
 //          ]
 //        }
 //        """;
-
-        openAiService.generateJsonFiles(result, fileId);
-        System.out.println("================== RESULT GENNERATED: \n"+result);
-
-        Path generatedFilePath = Paths.get("src/main/resources/static/generated", fileId + ".json");
-
-        fileService.importFromJson(generatedFilePath,courseId);
-
-        // Trả kết quả JSON
-        String baseUrl = "/generated/";
-        return ResponseEntity.ok(Map.of(
-                "json", baseUrl + fileId + ".json",
-                "fileName", originalFilename,
-                "contentLength", result.length()
-        ));
-
-
-    }
-
-}

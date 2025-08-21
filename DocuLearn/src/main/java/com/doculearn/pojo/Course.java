@@ -27,7 +27,8 @@ public class Course {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "title", nullable = false)
+
+    @Column(name = "title", nullable = false, unique = true)
     private String title;
 
     @Column(name = "description")
@@ -52,11 +53,10 @@ public class Course {
     @UpdateTimestamp
     private LocalDateTime updateAt;
 
-    @ColumnDefault("'DRAFT'")
     @Lob
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private CourseStatus status;
+    private CourseStatus status = CourseStatus.PUBLISH;
 
     @OneToMany(mappedBy = "course")
     private Set<Question> questions = new LinkedHashSet<>();

@@ -11,4 +11,6 @@ public interface CourseService {
     Course getCourseById(int id);
     Course createOrUpdateCourse(Course course);
     void deleteCourse(int id);
+    Course createIfNotExists(String lmsTitle);
+
 }

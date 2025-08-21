@@ -14,6 +14,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll()   // Cho phép tất cả
                 );
+        http
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable()) // tắt hẳn X-Frame-Options
+                        .contentSecurityPolicy(csp -> csp
+                                .policyDirectives("frame-ancestors 'self' https://moodle.drstrange.org")
+                        )
+                );
         return http.build();
     }
+
+
 }

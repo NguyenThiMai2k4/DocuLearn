@@ -19,7 +19,7 @@
     </style>
 </head>
 
-<body>
+<body data-course-id="[[${courseId}]]">
 <div th:replace="base :: header"></div>
 
 <main class="container py-5">
@@ -33,9 +33,12 @@
         <form id="uploadForm" th:action="@{/course/{id}/add-file(id=${courseId})}" method="post" enctype="multipart/form-data">
             <!-- Nếu bạn dùng Spring Security và csrf đang bật, hidden input không cần nếu đã có meta, nhưng để an toàn: -->
             <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <input type="hidden" id="courseId"  th:value="${courseId}"/>
 
             <input id="fileInput" class="form-control" type="file" name="file" accept=".pdf,.doc,.docx" />
-            <button id="uploadBtn" class="btn btn-primary mt-3" type="submit" disabled>Upload</button>
+            <button id="uploadBtn" class="btn btn-primary mt-3" type="submit" disabled
+                    th:text="'Upload ' + ${courseId}">
+            </button>
         </form>
 
         <p class="text-muted mt-3">Supported files: pdf, doc, docx</p>
@@ -62,7 +65,7 @@
 <div th:replace="base :: footer"></div>
 
 <!-- Script ở cuối để DOM đã load -->
-<script>
+<script th:inline="javascript">
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('uploadForm');
         const fileInput = document.getElementById('fileInput');
@@ -73,10 +76,16 @@
         const uploadMoreBtn = document.getElementById('uploadMore'); // có thể null
         const submitDocsBtn = document.getElementById('submitDocs'); // có thể null
 
-        const pathParts = window.location.pathname.split('/');
-        const courseId = pathParts[3];
+        // const pathParts = window.location.pathname.split('/');
+        // console.log("Path:", pathParts);
+        //
+        // const courseId = pathParts[3];
+        const courseId = document.getElementById('courseId').value;
+        console.log("url id: ", courseId)
+
         const allowedExt = ['pdf','doc','docx'];
         const uploadUrl = `/doculearn/course/${courseId}/add-file`;
+        console.log("url post: ", uploadUrl)
 
         // Nếu muốn ẩn nút khi có tồn tại:
         if (uploadMoreBtn) uploadMoreBtn.style.display = 'none';
