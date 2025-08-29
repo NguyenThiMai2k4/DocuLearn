@@ -28,8 +28,9 @@
 <body>
 <div th:replace="base :: header"></div>
 <main class="container">
+    <div id="alertContainer"></div>
     <h1 style="text-align: center">Tạo Khóa học</h1>
-    <form method="post" th:action="@{'/course/' + ${courseId} + '/add-summary'}" th:object="${summary}" enctype="multipart/form-data">
+    <form id ="summaryForm" method="post" th:action="@{'/course/' + ${courseId} + '/add-summary'}" th:object="${summary}" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label for="title">Title</label>
             <input class="form-control"  id="title" th:field="*{title}" placeholder="Tên bài học" rows="4">
@@ -64,13 +65,31 @@
         <div class="mb-3 mt-3">
             <input type="hidden" th:field="*{id}" />
             <!--            <input type="hidden" th:field="*{image}" />-->
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" onclick="validateAndSubmit()">
                 <span th:if="${summary.id == null}">Thêm bài viết</span>
                 <span th:unless="${summary.id == null}">Cập nhật bài viết</span>
             </button>
         </div>
     </form>
 </main>
+<script>
+    function validateAndSubmit() {
+        const alertContainer = document.getElementById('alertContainer');
+        alertContainer.innerHTML = '';
+
+        alertContainer.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            ✅ <strong>Cập nhật câu hỏi thành công!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Đóng"></button>
+        </div>
+    `;
+
+        // Đợi 2 giây rồi submit form
+        setTimeout(() => {
+            document.getElementById('summaryForm').submit();
+        }, 3000);
+    }
+</script>
 <div th:replace="base :: footer"></div>
 </body>
 </html>

@@ -41,7 +41,7 @@ public class FileService {
 
     private SummaryDTO summaryDTO;
 
-    public void importFromJson(Path filePath, Integer courseId) throws IOException {
+    public int importFromJson(Path filePath, Integer courseId) throws IOException {
         DataFileDTO data = objectMapper.readValue(filePath.toFile(), DataFileDTO.class);
         System.out.println("Nội dung JSON vừa tạo: " +data.toString());
 
@@ -57,7 +57,8 @@ public class FileService {
         summary.setCourse(course);
         summary.setSections(sections);
         summary.setStatus("PUBLISH");
-        this.summaryRepository.save(summary);
+        Summary savedSummary = this.summaryRepository.save(summary);
+
 
 //        // Lưu câu hỏi trắc nghiệm
         for (MultipleChoiceQuestionDTO mc : data.getMultipleChoice()) {
@@ -102,6 +103,8 @@ public class FileService {
                 this.questionRepository.save(question);
             }
         }
+        return savedSummary.getId();
       }
+
 
 }

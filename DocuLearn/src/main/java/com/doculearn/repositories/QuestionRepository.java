@@ -18,4 +18,6 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
     @EntityGraph(attributePaths = "questionOptions")
     List<Question> findByCourse_Id(Integer courseId);
 
+    List<Question> findByCourse_IdAndSummary_Id(Integer courseId, Integer summaryId);
+
 }

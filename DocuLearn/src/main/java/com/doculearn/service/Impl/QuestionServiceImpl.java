@@ -41,6 +41,21 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
+    public List<Question> findByCourse_IdAndSummary_Id(int courseId, int summaryId) {
+        List<Question> questions;
+        if(summaryId!=0){
+            questions=this.questionRepo.findByCourse_IdAndSummary_Id(courseId,summaryId);
+        }
+        else
+            questions=this.questionRepo.findByCourse_Id(courseId);
+
+        if(questions.isEmpty()){
+            throw new EntityNotFoundException("Not found Question with FK:"+courseId+":"+summaryId);
+        }
+        return questions;
+    }
+
+    @Override
     public Question getQuestionById(int id) {
         return this.questionRepo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Không tìm thấy câu hỏi với id = " + id));

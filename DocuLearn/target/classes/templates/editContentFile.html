@@ -1,0 +1,117 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Course Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <th:block th:replace="stepbar :: styles"></th:block>
+    <style>
+        .rotate-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .rotate-icon.open {
+            transform: rotate(90deg);
+        }
+
+        .question-text {
+            display: inline-block;
+            max-width: 75%; /* Chiếm tối đa 75% chiều ngang, còn lại để nút Delete */
+            white-space: nowrap; /* Không xuống dòng */
+            overflow: hidden; /* Ẩn phần thừa */
+            text-overflow: ellipsis; /* Hiện dấu "..." nếu bị cắt */
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+    <div th:replace="stepbar :: stepbar(2)"></div>
+    <!-- Khung chính như card trong ảnh -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div style="display:flex; gap:30px; margin-left:28px; margin-bottom:20px;">
+                <h5>Summary:</h5>
+                <a th:href="@{'/course/' + ${courseId} + '/summary/' + ${summaryId} + '/edit'}"
+                   th:text="'generate_tom_tat_noi_dung ' + ${summary.title}"></a>
+            </div>
+            <span></span>
+            <h5 class="card-title d-flex align-items-center"
+                data-bs-toggle="collapse"
+                data-bs-target="#questionList"
+                style="cursor: pointer;">
+                <i class="bi bi-chevron-right rotate-icon me-2"></i>
+                Danh sách câu hỏi
+            </h5>
+
+            <!-- Options -->
+
+            <div id="questionList" class="collapse mt-3">
+                <div th:each="q : ${questions}" class="card mb-3 shadow-sm">
+
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span class="question-text" th:text="'Câu hỏi: ' + ${q.content}"></span>
+                        <a th:href="@{'/course/' + ${courseId} + '/question-option/delete'(questionId=${q.id})}"
+                           th:onclick="return confirm('Bạn có muốn xóa ?')"
+                           class="btn btn-danger btn-sm">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+
+                    <form th:action="@{'/course/' + ${courseId} + '/upload-file/details'}"
+                          th:object="${optionForm}" method="post">
+                        <ul class="list-group list-group-flush">
+                            <li th:each="opt, stat : ${optionForm.options}"
+                                th:if="${opt.question.id} == ${q.id}"
+                                class="list-group-item d-flex justify-content-between align-items-center">
+
+                                <div class="d-flex align-items-center gap-2">
+                                    <input type="hidden" th:field="*{options[__${stat.index}__].id}"/>
+                                    <input type="hidden" th:field="*{options[__${stat.index}__].question.id}"/>
+
+                                    <input type="text" class="form-control"
+                                           th:field="*{options[__${stat.index}__].content}"/>
+
+                                    <input type="checkbox"
+                                           th:field="*{options[__${stat.index}__].isCorrect}"/> Đúng
+
+                                </div>
+
+
+                            </li>
+
+                        </ul>
+                        <div class="card-footer d-flex justify-content-between align-items-center">
+                            <button type="submit" class="btn btn-success btn-sm">Lưu thay đổi</button>
+                            <div class="footer-text text-muted"
+                                 th:text="'Ngày tạo: ' + ${#dates.format(q.createdAt, 'dd/MM/yyyy')}"></div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-end mb-3">
+        <a th:href="@{'/course/' + ${courseId} + '/download-pdf'}"
+           class="btn btn-outline-primary">
+            <i class="bi bi-file-earmark-pdf"></i> Download PDF
+        </a>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.card-header').forEach(header => {
+        header.addEventListener('click', function () {
+            const icon = this.querySelector('.rotate-icon');
+            icon.classList.toggle('open');
+        });
+    });
+</script>
+</body>
+</html>

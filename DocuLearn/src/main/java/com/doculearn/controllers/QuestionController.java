@@ -115,7 +115,7 @@ public String updateQo(@PathVariable("qoId") int qoId,
     @GetMapping("/delete")
     public String deleteSummary(@RequestParam("questionId") int questionId, @PathVariable("id") int courseId) {
         this.questionService.deleteQuestion(questionId);
-        return "redirect:/course/" + courseId + "/question-option";
+        return "redirect:/course/" + courseId + "/upload-file/details";
     }
 
 

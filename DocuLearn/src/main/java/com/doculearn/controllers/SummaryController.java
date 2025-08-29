@@ -65,7 +65,7 @@ public class SummaryController {
 //        summary.setSections(dataFile.getSummary().getSections());
         summary.setCourse(this.courseService.getCourseById(courseId));
         this.summaryService.createSummary(summary);
-        return "redirect:/course/" + courseId + "/detail";
+        return "redirect:/course/" + courseId + "/upload-file/details";
     }
 
     // ============= UPDATE Summary =================
@@ -78,7 +78,9 @@ public class SummaryController {
         return "createSummary";
     }
 
-    // ============= Delete Course =================
+
+
+    // ============= Delete summary =================
     @GetMapping("/summary/delete")
     public String deleteSummary(@RequestParam("id") int summaryId, @PathVariable("id") int courseId) {
         this.summaryService.deleteSummary(summaryId);
