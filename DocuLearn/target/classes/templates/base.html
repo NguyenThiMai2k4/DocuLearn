@@ -6,6 +6,70 @@
     <th:block th:fragment="styles">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <style>
+            #ai-chat-widget {
+                position: fixed;
+                bottom: 80px;
+                right: 30px;
+                z-index: 9999; /* luôn nằm đè */
+                font-family: Arial, sans-serif;
+            }
+
+            #ai-avatar {
+                width: 60px;
+                height: 60px;
+                background: #4cafef;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                font-size: 30px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+                color: white;
+            }
+
+            #ai-chat-box {
+                display: none;
+                position: absolute;
+                bottom: 80px;
+                right: 0;
+                width: 300px;
+                height: 400px;
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                overflow: hidden;
+                flex-direction: column;
+            }
+
+            #ai-messages {
+                height: 340px;
+                overflow-y: auto;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .ai-input {
+                display: flex;
+                border-top: 1px solid #ddd;
+            }
+
+            .ai-input input {
+                flex: 1;
+                border: none;
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .ai-input button {
+                border: none;
+                background: #4cafef;
+                color: white;
+                padding: 10px;
+                cursor: pointer;
+            }
+        </style>
     </th:block>
 </head>
 <body>
@@ -41,11 +105,35 @@
     </nav>
 </header>
 
+<div id="ai-chat-widget" th:fragment="ai_box">
+    <div id="ai-avatar">
+        🤖
+    </div>
+    <div id="ai-chat-box">
+        <div id="ai-messages"></div>
+        <div class="ai-input">
+            <input type="text" id="ai-user-input" placeholder="Hỏi gì đó..." />
+            <button onclick="sendToAI()">Gửi</button>
+        </div>
+    </div>
+</div>
+
 <footer th:fragment="footer">
-    <div class="mt-4 p-5 bg-primary text-white rounded">
-        <h1>Social Media Post</h1>
-        <p>Social Post &copy; 2025</p>
+    <div class="mt-4 p-5 bg-dark text-white rounded">
+        <h2>
+            DocuLearn
+            <span style="font-size: 1.3rem; font-weight: normal;">
+                - Nền tảng học tập thông minh từ tài liệu
+            </span>
+        </h2>
+
+        <p> ✉️ mai.nt108i@gmail.com</p>
+        <p> &copy; 2025, DocuLearn</p>
     </div>
 </footer>
+
+<script src="/js/ai-box.js"></script>
+
+
 </body>
 </html>

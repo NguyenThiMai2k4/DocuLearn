@@ -59,10 +59,9 @@ public class SummaryController {
 
     // ============= ADD Summary =================
     @PostMapping("/add-summary")
-    public String addSummary(@ModelAttribute("summary") Summary summary, @ModelAttribute("dataFile") DataFileDTO dataFile,
+    public String addSummary(@ModelAttribute("summary") Summary summary,
                              @PathVariable("id") int courseId) {
         System.out.println("course id : "+courseId);
-//        summary.setSections(dataFile.getSummary().getSections());
         summary.setCourse(this.courseService.getCourseById(courseId));
         this.summaryService.createSummary(summary);
         return "redirect:/course/" + courseId + "/upload-file/details";

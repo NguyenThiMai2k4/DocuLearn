@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -39,7 +40,7 @@ public class FileController {
         }
 
         // Chỉ cho phép PDF
-        String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
+        String originalFilename = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         if (!originalFilename.toLowerCase().endsWith(".pdf")) {
             return ResponseEntity.badRequest().body(Map.of("error", "Chỉ hỗ trợ file PDF"));
         }
@@ -51,15 +52,15 @@ public class FileController {
         file.transferTo(tempFile);
 
 
-//        String content = openAiService.extractTextFromPDF(tempFile);
-//        String prompt = openAiService.buildPrompt(content);
-//        String result = openAiService.callOpenAI(prompt);
-//        openAiService.generateJsonFiles(result, fileId);
-//        System.out.println("================== RESULT GENNERATED: \n"+result);
-//
-//        Path generatedFilePath = Paths.get("src/main/resources/static/generated", fileId + ".json");
+        String content = openAiService.extractTextFromPDF(tempFile);
+        String prompt = openAiService.buildPrompt(content);
+        String result = openAiService.callOpenAI(prompt);
+        openAiService.generateJsonFiles(result, fileId);
+        System.out.println("================== RESULT GENNERATED: \n"+result);
 
-        Path generatedFilePath = Paths.get("src/main/resources/static/generated/f71db1c5-5a67-470e-9a2e-e50640b29bd9.json");
+        Path generatedFilePath = Paths.get("src/main/resources/static/generated", fileId + ".json");
+
+        //Path generatedFilePath = Paths.get("src/main/resources/static/generated/3afc7b52-9d5d-4dea-979d-d2dc12d3bf32.json");
 
 
         int summaryId = fileService.importFromJson(generatedFilePath,courseId);
