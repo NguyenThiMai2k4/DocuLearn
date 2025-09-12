@@ -6,6 +6,7 @@ import org.apache.pdfbox.text.PDFTextStripper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -18,7 +19,6 @@ import java.util.regex.Pattern;
 
 @Service
 public class OpenAiService {
-
     @Value("${spring.ai.openai.api-key}")
     private String apiKey;
     private final String OUTPUT_FOLDER = "src/main/resources/static/generated/";

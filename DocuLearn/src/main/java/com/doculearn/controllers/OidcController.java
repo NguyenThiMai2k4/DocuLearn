@@ -20,8 +20,8 @@ import java.util.UUID;
 @RequestMapping("/oidc")
 public class OidcController {
 
-    @Value("${ngrok.url}")
-    private String ngrokUrl;
+//    @Value("${ngrok.url}")
+//    private String ngrokUrl;
 
     @PostMapping("/login")
     public ResponseEntity<String> oidcLogin(
@@ -44,7 +44,7 @@ public class OidcController {
                 .queryParam("scope", "openid")
                 .queryParam("prompt", "none")
                 .queryParam("client_id", "J7G08QdQTKnexlI") // clientId từ LMS
-                .queryParam("redirect_uri", ngrokUrl + "/doculearn/lti/launch")
+                //.queryParam("redirect_uri", ngrokUrl + "/doculearn/lti/launch")
                 .queryParam("login_hint", loginHint)
                 .queryParam("state", state)
                 .queryParam("nonce", nonce);
