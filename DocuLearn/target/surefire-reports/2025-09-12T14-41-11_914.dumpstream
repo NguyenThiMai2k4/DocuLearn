@@ -1,0 +1,5 @@
+# Created at 2025-09-12T14:41:12.478
+Boot Manifest-JAR contains absolute paths in classpath 'D:\DoAn\DocuLearn\DocuLearn\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
