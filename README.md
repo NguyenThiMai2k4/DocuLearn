@@ -18,6 +18,8 @@ Ensure you have **JDK 17+** and **mvn** installed.
 **Steps to Run the Project** <br>
 1. Clone the repository
    ```bash
+   git clone https://github.com/NguyenThiMai2k4/DocuLearn.git
+   cd DocuLearn
    
 2. Configure the database
    - Ensure MySQL 8.0+ is running.
