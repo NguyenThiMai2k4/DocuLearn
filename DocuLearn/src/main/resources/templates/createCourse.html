@@ -6,7 +6,7 @@
     <th:block th:replace="base :: styles"></th:block>
 </head>
 <body>
-<div th:replace="base :: header"></div>
+<th:block th:replace="base :: header"></th:block>
 <main class="container">
     <h1 style="text-align: center">Tạo Khóa học</h1>
     <form method="post" th:action="@{/add-course}" th:object="${course}" enctype="multipart/form-data">
@@ -50,8 +50,8 @@
             <input type="hidden" th:field="*{id}" />
 <!--            <input type="hidden" th:field="*{image}" />-->
             <button class="btn btn-info">
-                <span th:if="${course.id == null}">Thêm bài viết</span>
-                <span th:unless="${course.id == null}">Cập nhật bài viết</span>
+                <span th:if="${course.id == null}">Thêm khóa học</span>
+                <span th:unless="${course.id == null}">Cập nhật khóa học</span>
             </button>
         </div>
     </form>

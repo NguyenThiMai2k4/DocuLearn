@@ -2,7 +2,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Tạo bài viết</title>
+    <title>Nội dung tóm tắt</title>
     <th:block th:replace="base :: styles"></th:block>
 
     <script>
@@ -26,10 +26,10 @@
 
 </head>
 <body>
-<div th:replace="base :: header"></div>
+<th:block th:replace="base :: header"></th:block>
 <main class="container">
     <div id="alertContainer"></div>
-    <h1 style="text-align: center">Tạo Khóa học</h1>
+    <h1 style="text-align: center">Nội dung tóm tắt bài học</h1>
     <form id ="summaryForm" method="post" th:action="@{'/course/' + ${courseId} + '/add-summary'}" th:object="${summary}" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label for="title">Title</label>

@@ -1,0 +1,83 @@
+{
+  "summary": {
+    "title": "**Chương 1: Nhập môn React Native**",
+    "sections": [
+      {
+        "heading": "Phần 1: Giới thiệu",
+        "content": "React Native là một framework JavaScript dùng để xây dựng ứng dụng di động cho iOS và Android, sử dụng các native component thay vì web component. Đây là một giải pháp đa nền tảng, mã nguồn viết bằng React Native sẽ được biên dịch thành mã native cho cả hai hệ điều hành. Điều này giúp chỉ cần sử dụng JavaScript để phát triển ứng dụng di động với sự hỗ trợ từ cộng đồng lớn."
+      },
+      {
+        "heading": "Phần 2: Ứng dụng đầu tiên",
+        "content": "Để bắt đầu với React Native, cần cài đặt NodeJS và công cụ tạo project. Thực hiện lệnh `npx expo start` để khởi chạy ứng dụng. Có thể chạy ứng dụng trên điện thoại bằng cách cài đặt ứng dụng expo client và quét mã QR. Đối với máy giả lập Android, cần cài Android Studio và tạo AVD để chạy máy giả lập."
+      },
+      {
+        "heading": "Phần 3: Debugging",
+        "content": "React Native hỗ trợ debugging trên Android và iOS với các lệnh tương ứng: Command + M cho Android và Command + D cho iOS. Điều này giúp kiểm tra và sửa lỗi một cách hiệu quả khi phát triển ứng dụng."
+      },
+      {
+        "heading": "Phần 4: Props",
+        "content": "Props là các đối số được truyền vào component giống như các thuộc tính và không thể thay đổi tại component con. Nếu component có constructor, props phải được truyền vào thông qua constructor và phương thức super."
+      },
+      {
+        "heading": "Phần 5: State",
+        "content": "State là đối tượng lưu giá trị các thuộc tính của component, có thể thay đổi bất cứ khi nào bằng phương thức `this.setState()`. Khi state thay đổi, component sẽ được nạp lại (re-render). Truy cập thuộc tính của state thông qua `this.state.propertyName`."
+      },
+      {
+        "heading": "Phần 6: Vòng đời React Component",
+        "content": "Mỗi component của React có ba giai đoạn chính: Mounting (khi đặt component vào DOM), Updating (khi component được cập nhật do thay đổi trong props hoặc state) và Unmounting (khi component được gỡ khỏi DOM)."
+      }
+    ]
+  },
+  "multipleChoice": [
+    {
+      "question": "1. React Native được sử dụng để xây dựng ứng dụng cho hệ điều hành nào?",
+      "options": [
+        "iOS",
+        "Android",
+        "Cả iOS và Android",
+        "Windows"
+      ]
+    },
+    {
+      "question": "2. Để bắt đầu một project React Native, cần thực hiện lệnh nào sau đây?",
+      "options": [
+        "npm install",
+        "npx expo start",
+        "node server.js",
+        "react-native run"
+      ]
+    },
+    {
+      "question": "3. Props trong React Native có đặc điểm gì?",
+      "options": [
+        "Có thể thay đổi tại component con",
+        "Không thể thay đổi tại component con",
+        "Chỉ sử dụng cho component cha",
+        "Không cần truyền vào constructor"
+      ]
+    },
+    {
+      "question": "4. State trong React Native có thể thay đổi bằng phương thức nào?",
+      "options": [
+        "this.set()",
+        "this.updateState()",
+        "this.setState()",
+        "this.stateChange()"
+      ]
+    },
+    {
+      "question": "5. Giai đoạn nào không thuộc vòng đời của một React Component?",
+      "options": [
+        "Mounting",
+        "Updating",
+        "Rendering",
+        "Unmounting"
+      ]
+    }
+  ],
+  "essayQuestions": [
+    "🖋️ Câu hỏi tự luận:",
+    "1. Phân tích sự khác biệt giữa Props và State trong React Native, và vai trò của mỗi khái niệm trong quản lý dữ liệu của ứng dụng.",
+    "2. Trình bày và phân tích các giai đoạn trong vòng đời của một React Component, và cách mỗi giai đoạn ảnh hưởng đến hiệu suất của ứng dụng."
+  ]
+}
